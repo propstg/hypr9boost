@@ -3,14 +3,12 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterUsableItem('nitro', function(source)
-    if ESX.GetPlayerFromId(source).getInventoryItem('nitro').count > 0 then
+    local xPlayer = ESX.GetPlayerFromId(source)
+    
+    if xPlayer.getInventoryItem('nitro').count > 0 then
         TriggerClientEvent('hypr9speed:activar', source)
+        xPlayer.removeInventoryItem('nitro', 1)
     else
-        TriggerClientEvent('esx:showNotification', source, "Algo va mal.")
+        TriggerClientEvent('esx:showNotification', source, _('not_enough_nitro'))
     end
-end)
-
-RegisterServerEvent('hypr9speed:removeInventoryItem')
-AddEventHandler('hypr9speed:removeInventoryItem', function(item, quantity)
-    ESX.GetPlayerFromId(source).removeInventoryItem(item, quantity)
 end)

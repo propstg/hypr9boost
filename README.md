@@ -2,16 +2,14 @@
 Boost for vehicles, purchasable and usable by everyone.
 This only works with ESX.
 
-Run the following query to add nitro or add it yourself.
+Import the appropriate sql file under `localization/`.
 ```
-INSERT INTO `items` (name, label) VALUES 
-	('nitro', 'Nitroso');
+$ mysql -u user -p < en.sql
 ```
 
-If you want to change values of how much the turbo should do change the following in client.lua
-Line 37, change 80.0 to whatever you want.
+If you want to change values of how much the turbo should do change Config.BoostForce in config.lua.
 
-If you don't want to keep the 3 second delay just comment the line 42.
+If you don't want to keep the 3 second delay or want to lower it, set Config.DelayBeforeBoost to 0 in config.lua.
 
 How to install:
 
