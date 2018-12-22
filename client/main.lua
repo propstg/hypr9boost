@@ -28,8 +28,8 @@ end)
 RegisterNetEvent('hypr9speed:activar')
 AddEventHandler('hypr9speed:activar', function()
     closeMenuIfOpen('inventory')
-	closeMenuIfOpen('inventory_item')
-	ESX.ShowNotification(_U('nitrous_activated'))
+    closeMenuIfOpen('inventory_item')
+    ESX.ShowNotification(_('nitrous_activated'))
     nitroActivado = true
 end)
 

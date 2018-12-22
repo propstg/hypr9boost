@@ -9,7 +9,7 @@ $ mysql -u user -p < en.sql
 
 If you want to change values of how much the turbo should do change Config.BoostForce in config.lua.
 
-If you don't want to keep the 3 second delay or want to lower it, set Config.DelayBeforeBoost to 0 in config.lua.
+If you want to change the 3 second delay between activating the nitrous and it taking effect, change Config.DelayBeforeBoost in config.lua. To remove the delay, change to 0.
 
 How to install:
 
