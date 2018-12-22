@@ -1,4 +1,4 @@
 Locales['en'] = {
-    ['not_enough_nitro'] = 'Not enough nitrous.',
-    ['nitrous_used']     = 'Nitrous activated.'
+    ['not_enough_nitrous'] = 'Not enough nitrous.',
+    ['nitrous_activated']  = 'Nitrous activated.'
 }
