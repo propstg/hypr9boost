@@ -1,5 +1,6 @@
 ESX = nil
 local nitroActivado = false
+local playerVehicle = 0
 
 Citizen.CreateThread(function()
     while ESX == nil do
@@ -10,17 +11,22 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
 
-        local playerVehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+        playerVehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
 
-        if nitroActivado and playerVehicle ~= 0 and IsControlPressed(1, 38) then
-            Citizen.Wait(Config.DelayBeforeBoost)
+        if nitroActivado and playerVehicle ~= 0 then
+            ESX.ShowHelpNotification(_('nitrous_ready'))
 
-            SetVehicleBoostActive(playerVehicle, 1, 0)
-            SetVehicleForwardSpeed(playerVehicle, Config.BoostForce)
-            StartScreenEffect("RaceTurbo", 0, 0)
-            SetVehicleBoostActive(playerVehicle, 0, 0)
+            if IsControlPressed(1, 38) then
+                ESX.ShowNotification(_('nitrous_activated'))
+                Citizen.Wait(Config.DelayBeforeBoost)
 
-            nitroActivado = false
+                SetVehicleBoostActive(playerVehicle, 1, 0)
+                SetVehicleForwardSpeed(playerVehicle, Config.BoostForce)
+                StartScreenEffect("RaceTurbo", 0, 0)
+                SetVehicleBoostActive(playerVehicle, 0, 0)
+
+                nitroActivado = false
+            end
         end
     end
 end)
@@ -29,7 +35,6 @@ RegisterNetEvent('hypr9speed:activar')
 AddEventHandler('hypr9speed:activar', function()
     closeMenuIfOpen('inventory')
     closeMenuIfOpen('inventory_item')
-    ESX.ShowNotification(_('nitrous_activated'))
     nitroActivado = true
 end)
 
