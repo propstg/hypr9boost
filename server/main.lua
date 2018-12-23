@@ -9,6 +9,6 @@ ESX.RegisterUsableItem('nitro', function(source)
         TriggerClientEvent('hypr9speed:activar', source)
         xPlayer.removeInventoryItem('nitro', 1)
     else
-        TriggerClientEvent('esx:showNotification', source, _('not_enough_nitro'))
+        TriggerClientEvent('esx:showNotification', source, _('not_enough_nitrous'))
     end
 end)
